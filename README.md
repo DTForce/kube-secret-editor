@@ -2,13 +2,21 @@
 
 Usage:
 
-    $> KUBE_EDITOR=/path/to/kube-secret-editor.py kubectl edit secret my-secret
+    $ KUBE_EDITOR=/path/to/kube-secret-editor.py kubectl edit secret my-secret
 
 The script will:
 - decode the secret values coming from k8s
 - call $EDITOR
 - encode the values back
 
-I have a handy shell alias to use it:
+## Setup a kubectl plugin
 
-    alias kedit-secret="KUBE_EDITOR=kube-secret-editor kubectl edit secret"
+Edit `kubectl-edit_secret` file and set \_DIR\_ to a directory, where you put the python script.
+
+Copy the file to `/usr/local/bin`:
+
+    # cp kubectl-edit_secret /usr/local/bin
+
+Now you can run
+
+    $ kubectl edit-secret my-secret
